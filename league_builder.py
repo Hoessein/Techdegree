@@ -101,4 +101,3 @@ if __name__ == '__main__':
     sort_experienced_players()
     sort_unexperienced_players()
     write_to_text_file()
-
