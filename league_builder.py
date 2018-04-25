@@ -97,7 +97,6 @@ def write_to_text_file():
 
 if __name__ == '__main__':
 
-    csv_to_list()
     filter_experience()
     sort_experienced_players()
     sort_unexperienced_players()
