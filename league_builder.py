@@ -26,11 +26,7 @@ def filter_experience():
             inexperienced_players.append(player)
 
 
-
-#In this method I use a while loop to loop through the experienced_players list until it's falsy
-#Inside the loop I append the experienced players to the three empty lists: dragons, raptors and sharks
-#After a player gets appended i delete that player from the experienced_players list using the 0 index position
-#I use a try  block to break out of the loop when there are no experienced players left
+# In this method the experienced and inexperienced players are divided into the three team lists
 def sort_players():
 
     for experienced_player, inexperienced_player in zip(experienced_players[:3], inexperienced_players[:3]):
@@ -45,11 +41,10 @@ def sort_players():
         raptors.append(experienced_player)
         raptors.append(inexperienced_player)
 
-# In the following 3 methods I enter the dict key values to select which key values are relevant for this project
-# I use the join method to comma separate the values
-# I use some new lines formatting so it models the requirements
 
+# In this method a readable format of the teams are returned
 def teams_roster(team, title):
+
     team_group = title + '\n'
 
     for player in team:
@@ -57,6 +52,7 @@ def teams_roster(team, title):
         team_group += ", ".join(team_keys)
         team_group += '\n'
     team_group += '\n'
+
     return team_group
 
 
