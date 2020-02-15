@@ -12,8 +12,8 @@ inexperienced_players = []
 def csv_to_list():
     with open('soccer_players.csv', 'r') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=',')
-        player = list(csv_reader)
-    return player
+        players = list(csv_reader)
+    return players
 
 
 # In this method I loop through the player list and check if they are experienced
@@ -56,15 +56,34 @@ def teams_roster(team, title):
     return team_group
 
 
+def write_letter(team_list, team_name):
+
+    for player in team_list:
+        filename = player['Name'].replace(" ", "_").lower() + ".txt"
+        salutation = f"Dear {player['Guardian Name(s)']}, \n\n"
+        letter_body = f"We are proud to inform you that {player['Name']}" \
+            f" has been selected to play for {team_name} in the soccer league."
+
+        file = open(filename, "w")
+        file.write(salutation)
+        file.write(letter_body)
+
+
 # This is a method which writes the rosters to a new text file which is called team.txt.
 def write_to_text_file():
     file = open("teams.txt", "w")
+
     file.write(teams_roster(raptors, 'Raptors'))
     file.write(teams_roster(dragons, 'Dragons'))
     file.write(teams_roster(sharks, 'Sharks'))
+
+    write_letter(raptors, 'Raptors')
+    write_letter(dragons, 'Dragons')
+    write_letter(sharks, 'Sharks')
 
 
 if __name__ == '__main__':
     filter_experience()
     sort_players()
     write_to_text_file()
+
